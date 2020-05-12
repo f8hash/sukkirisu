@@ -10,21 +10,21 @@ class SukkirisuViewTest extends TestCase
     public function setUp() :void
     {
         $sukkirisuView = new SukkirisuView();
-        $result = $sukkirisuView->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
+        $this->result = $sukkirisuView->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
     }
 
     public function testHasRank() :void
     {
-        $this->assertArrayHasKey('rank', $result);
+        $this->assertArrayHasKey('rank', $this->result);
     }
 
     public function testHasText() :void
     {
-        $this->assertArrayHasKey('text', $result);
+        $this->assertArrayHasKey('text', $this->result);
     }
 
     public function testHasColor() :void
     {
-        $this->assertArrayHasKey('color', $result);
+        $this->assertArrayHasKey('color', $this->result);
     }
 }
