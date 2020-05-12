@@ -11,17 +11,17 @@ class SukkirisuViewTest extends TestCase
         $result = $sukkirisuView()->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
     }
 
-    public function testHasRank()
+    public function testHasRank() :void
     {
         $this->assertArrayHasKey('rank', $result);
     }
 
-    public function testHasText()
+    public function testHasText() :void
     {
         $this->assertArrayHasKey('text', $result);
     }
 
-    public function testHasColor()
+    public function testHasColor() :void
     {
         $this->assertArrayHasKey('color', $result);
     }
