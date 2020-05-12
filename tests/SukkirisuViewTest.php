@@ -8,7 +8,7 @@ class SukkirisuViewTest extends TestCase
     public function setUp() :void
     {
         $sukkirisuView = new SukkirisuView();
-        $result = $sukkirisuView()->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
+        $result = $sukkirisuView->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
     }
 
     public function testHasRank() :void
