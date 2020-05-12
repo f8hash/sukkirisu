@@ -1,6 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+require_once(dirname(__FILE__).'/../SukkirisuView.php');
+
 class SukkirisuViewTest extends TestCase
 {
     private $result;
