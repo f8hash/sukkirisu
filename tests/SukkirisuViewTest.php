@@ -16,15 +16,18 @@ class SukkirisuViewTest extends TestCase
     public function testHasRank() :void
     {
         $this->assertArrayHasKey('rank', $this->result);
+        $this->assertEquals('10位', $this->result['rank']);
     }
 
     public function testHasText() :void
     {
         $this->assertArrayHasKey('text', $this->result);
+        $this->assertEquals('ちょっとした気のゆるみで大きなミスを犯すことも', $this->result['text']);
     }
 
     public function testHasColor() :void
     {
         $this->assertArrayHasKey('color', $this->result);
+        $this->assertEquals('緑', $this->result['color']);
     }
 }
