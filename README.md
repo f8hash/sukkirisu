@@ -15,6 +15,18 @@ php sukkirisu.php 7
 白
 ```
 
+## テスト実行
+```
+./vendor/bin/phpunit tests/SampleTest.php
+PHPUnit 9.1.4 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.033, Memory: 4.00 MB
+
+OK (1 test, 1 assertion)
+```
+
 ## 今後やりたいこと
 - 表示を整える
 - 超スッキりす、ガッカりすへの対応
