@@ -2,12 +2,13 @@
 
 class SukkirisuView
 {
-    public function array() :array
+    public function array($crawlerFilterText) :array
     {
+      $array = explode(' ', $crawlerFilterText);
       return [
-        'rank' => '',
-        'text' => '',
-        'color' => '',
+        'rank' => $array[1],
+        'text' => $array[2],
+        'color' => $array[3],
       ];
     }
 }
