@@ -1,6 +1,8 @@
 <?php
 
-class SukkirisuView
+namespace Sukkirisu;
+
+class ConsoleViewer
 {
     public function array($crawlerFilterText) :array
     {

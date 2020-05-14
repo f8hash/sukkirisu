@@ -1,15 +1,16 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
 
-require_once(dirname(__FILE__).'/../SukkirisuView.php');
+require_once(dirname(__FILE__).'/../ConsoleViewer.php');
 
-class SukkirisuViewTest extends TestCase
+class ConsoleViewerTest extends TestCase
 {
     private $result;
     
     public function setUp() :void
     {
-        $sukkirisuView = new SukkirisuView();
+        $sukkirisuView = new Sukkirisu\ConsoleViewer();
         $this->result = $sukkirisuView->array('7 10位 ちょっとした気のゆるみで大きなミスを犯すことも 緑');
     }
 
