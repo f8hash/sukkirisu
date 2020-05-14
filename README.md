@@ -1,6 +1,9 @@
 # 練習：スッキりす
 練習シリーズ第1弾。
 
+## 意識すること
+- interfaceを使った実装
+
 ## スッキりすとは
 http://www.ntv.co.jp/sukkiri/sukkirisu/index.html
 
