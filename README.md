@@ -3,6 +3,7 @@
 
 ## 意識すること
 - interfaceを使った実装
+- SOLIDの原則
 
 ## スッキりすとは
 http://www.ntv.co.jp/sukkiri/sukkirisu/index.html
