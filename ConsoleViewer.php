@@ -2,15 +2,13 @@
 
 namespace Sukkirisu;
 
-class ConsoleViewer
+require_once('ViewerInterface.php');
+
+class ConsoleViewer implements ViewerInterface
 {
-    public function array($crawlerFilterText) :array
+    public function show($crawlerFilterText) :void
     {
       $array = explode(' ', $crawlerFilterText);
-      return [
-        'rank' => $array[1],
-        'text' => $array[2],
-        'color' => $array[3],
-      ];
+      echo $array[0].'月生まれは'.$array[1].'。'.$array[2].'。ラッキーカラーは'.$array[3];
     }
 }
