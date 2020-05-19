@@ -8,9 +8,12 @@ require_once(dirname(__FILE__).'/../SukkirisuCrawler.php');
 
 class SukkirisuCrawlerTest extends TestCase
 {
-    public function testGet() :void
+    private $sukkirisuPaser;
+    private $stub;
+
+    public function setUp(): void
     {
-        $sukkirisuPaser = new Sukkirisu\SukkirisuCrawler();
+        $this->sukkirisuPaser = new Sukkirisu\SukkirisuCrawler();
 
         // メソッドチェーンのモック化
         // filter()->text()
@@ -18,9 +21,20 @@ class SukkirisuCrawlerTest extends TestCase
         $crawlerStub->method('text')->willReturn('7 8位 暑くなって体が弱っているので睡眠をしっかり 茶');
         $crawlerStub->method('filter')->willReturn($crawlerStub);
 
-        $clientStub = $this->createMock(Client::class);
-        $clientStub->method('request')->willReturn($crawlerStub);
+        $this->stub = $this->createMock(Client::class);
+        $this->stub->method('request')->willReturn($crawlerStub);
+    }
 
-        $this->assertIsArray($sukkirisuPaser->get($clientStub));
+    public function testArrayByGetMethod(): void
+    {
+        $this->assertIsArray($this->sukkirisuPaser->get($this->stub));
+    }
+
+    public function testArrayHasCorrectValueByGetMethod(): void
+    {
+        $this->assertContains('7', $this->sukkirisuPaser->get($this->stub));
+        $this->assertContains('8位', $this->sukkirisuPaser->get($this->stub));
+        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $this->sukkirisuPaser->get($this->stub));
+        $this->assertContains('茶', $this->sukkirisuPaser->get($this->stub));
     }
 }
