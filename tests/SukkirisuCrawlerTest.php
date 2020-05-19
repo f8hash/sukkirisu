@@ -4,13 +4,13 @@ use PHPUnit\Framework\TestCase;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
-require_once(dirname(__FILE__).'/../SukkirisuClawler.php');
+require_once(dirname(__FILE__).'/../SukkirisuCrawler.php');
 
-class SukkirisuClawlerTest extends TestCase
+class SukkirisuCrawlerTest extends TestCase
 {
     public function testGet() :void
     {
-        $sukkirisuPaser = new Sukkirisu\SukkirisuClawler();
+        $sukkirisuPaser = new Sukkirisu\SukkirisuCrawler();
 
         // メソッドチェーンのモック化
         // filter()->text()

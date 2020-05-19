@@ -4,7 +4,7 @@ namespace Sukkirisu;
 
 use Goutte\Client;
 
-class SukkirisuClawler
+class SukkirisuCrawler
 {
     private $url;
 
