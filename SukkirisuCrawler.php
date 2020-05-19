@@ -4,7 +4,9 @@ namespace Sukkirisu;
 
 use Goutte\Client;
 
-class SukkirisuCrawler
+require_once('CrawlerInterface.php');
+
+class SukkirisuCrawler implements CrawlerInterface
 {
     private $url;
 
