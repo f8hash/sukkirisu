@@ -6,5 +6,5 @@ use Goutte\Client;
 
 Interface CrawlerInterface
 {
-    public function get(Client $client);
+    public function get();
 }
