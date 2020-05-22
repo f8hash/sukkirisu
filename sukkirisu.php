@@ -8,4 +8,4 @@ use Goutte\Client;
 
 $crawler = new Sukkirisu\SukkirisuCrawler(new Client());
 $viewer = new Sukkirisu\ConsoleViewer($crawler);
-$viewer->show($crawler->get());
+$viewer->show();
