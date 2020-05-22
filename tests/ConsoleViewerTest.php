@@ -7,7 +7,7 @@ require_once(dirname(__FILE__).'/../CrawlerInterface.php');
 
 class ConsoleViewerTest extends TestCase
 {
-    public function testShow() :void
+    public function testShow(): void
     {
         $this->expectOutputString('7月生まれは10位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 

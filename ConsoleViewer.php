@@ -14,7 +14,7 @@ class ConsoleViewer implements ViewerInterface
         $this->crawler = $crawler;
     }
 
-    public function show() :void
+    public function show(): void
     {
       $array = $this->crawler->get();
       
