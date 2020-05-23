@@ -16,7 +16,7 @@ class SukkirisuCrawlerTest extends TestCase
         // filter()->text()
         $crawlerStub = $this->createMock(Crawler::class);
         $crawlerStub->method('text')->willReturn('7 8位 暑くなって体が弱っているので睡眠をしっかり 茶');
-        $crawlerStub->method('filter')->willReturn($crawlerStub);
+        $crawlerStub->method('filter')->will($this->returnSelf());
 
         $clientStub = $this->createMock(Client::class);
         $clientStub->method('request')->willReturn($crawlerStub);
