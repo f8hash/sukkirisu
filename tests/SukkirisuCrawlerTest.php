@@ -8,7 +8,7 @@ require_once(dirname(__FILE__).'/../SukkirisuCrawler.php');
 
 class SukkirisuCrawlerTest extends TestCase
 {
-    private $sukkirisuPaser;
+    private $sukkirisuCrawler;
 
     public function setUp(): void
     {
@@ -21,19 +21,19 @@ class SukkirisuCrawlerTest extends TestCase
         $clientStub = $this->createMock(Client::class);
         $clientStub->method('request')->willReturn($crawlerStub);
 
-        $this->sukkirisuPaser = new Sukkirisu\SukkirisuCrawler($clientStub);
+        $this->sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
     }
 
     public function testArrayByGetMethod(): void
     {
-        $this->assertIsArray($this->sukkirisuPaser->get());
+        $this->assertIsArray($this->sukkirisuCrawler->get());
     }
 
     public function testArrayHasCorrectValueByGetMethod(): void
     {
-        $this->assertContains('7', $this->sukkirisuPaser->get());
-        $this->assertContains('8位', $this->sukkirisuPaser->get());
-        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $this->sukkirisuPaser->get());
-        $this->assertContains('茶', $this->sukkirisuPaser->get());
+        $this->assertContains('7', $this->sukkirisuCrawler->get());
+        $this->assertContains('8位', $this->sukkirisuCrawler->get());
+        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $this->sukkirisuCrawler->get());
+        $this->assertContains('茶', $this->sukkirisuCrawler->get());
     }
 }
