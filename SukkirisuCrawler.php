@@ -35,7 +35,6 @@ class SukkirisuCrawler implements CrawlerInterface
         foreach ($types as $key => $type) {
             $divId = "#main #month{$this->month}.{$key}";
 
-            // TODO テスト実行時にここを通過せずにUndefined index: textになる
             if (count($crawler->filter($divId))) {
                 $ret['type'] = $type;
                 $ret['text'] = explode(' ', $crawler->filter($divId)->text());
