@@ -16,7 +16,7 @@ class SukkirisuCrawlerTest extends TestCase
         // メソッドチェーンのモック化
         // filter()->text()
         $crawlerStub = $this->createMock(Crawler::class);
-        $crawlerStub->method('text')->willReturn('7 8位 暑くなって体が弱っているので睡眠をしっかり 茶');
+        $crawlerStub->method('text')->willReturn('7 3位 暑くなって体が弱っているので睡眠をしっかり 茶');
         
         $crawlerStub->method('filter')->will(
             $this->onConsecutiveCalls(
@@ -35,7 +35,7 @@ class SukkirisuCrawlerTest extends TestCase
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
         $this->assertContains('7', $result);
-        $this->assertContains('8位', $result);
+        $this->assertContains('3位', $result);
         $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $result);
         $this->assertContains('茶', $result);
     }
