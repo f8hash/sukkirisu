@@ -10,13 +10,8 @@ http://www.ntv.co.jp/sukkiri/sukkirisu/index.html
 
 ## 使い方
 ```
-php sukkirisu.php {誕生月}
-
-php sukkirisu.php 7
-7
-5位
-大切な人へプレゼントで感謝を伝えよう
-白
+$ php sukkirisu.php
+スッキりす！7月生まれは6位。苦手な事にチャレンジすると克服できるチャンス。ラッキーカラーは青
 ```
 
 ## テスト実行
@@ -34,4 +29,5 @@ OK (1 test, 1 assertion)
 ## 今後やりたいこと
 - 表示を整える
 - 超スッキりす、ガッカりすへの対応
+- sukkirisu型
 - 別言語（Goとか）で書き換え
