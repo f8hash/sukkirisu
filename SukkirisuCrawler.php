@@ -36,8 +36,19 @@ class SukkirisuCrawler implements CrawlerInterface
             $divId = "#main #month{$this->month}.{$key}";
 
             if (count($crawler->filter($divId))) {
-                $ret['type'] = $type;
-                $ret['text'] = explode(' ', $crawler->filter($divId)->text());
+                $data = explode(' ', $crawler->filter($divId)->text());
+                $ret['month'] = $data[0];
+
+                // 超スッキりす、ガッカりすは順位が渡ってこない
+                if (in_array($key, ['type1', 'type4'])) {
+                    $ret['rank'] = ($key == 'type1') ? '1位' : '12位';
+                    $ret['result'] = $data[1];
+                    $ret['color'] = $data[2];
+                } else {
+                    $ret['rank'] = $data[1];
+                    $ret['result'] = $data[2];
+                    $ret['color'] = $data[3];
+                }
             }
         }
 
@@ -46,6 +57,6 @@ class SukkirisuCrawler implements CrawlerInterface
         //     throw new Exception('ページの任意の要素に結果が存在しない。');
         // }
 
-        return $ret['text'];
+        return $ret;
     }
 }
