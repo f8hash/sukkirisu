@@ -4,5 +4,5 @@ namespace Sukkirisu;
 
 Interface ViewerInterface
 {
-    public function show($data);
+    public function show();
 }
