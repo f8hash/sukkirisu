@@ -7,12 +7,20 @@ require_once(dirname(__FILE__).'/../CrawlerInterface.php');
 
 class ConsoleViewerTest extends TestCase
 {
-    public function testShow(): void
+    /**
+     * @test
+     */
+    public function まあまあスッキりすの結果表示(): void
     {
         $this->expectOutputString('7月生まれは10位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 
         $crawlerStub = $this->createMock(Sukkirisu\CrawlerInterface::class);
-        $crawlerStub->method('get')->willReturn(['7', '10位', 'ちょっとした気のゆるみで大きなミスを犯すことも', '緑']);
+        $crawlerStub->method('get')->willReturn([
+            'month' => '7',
+            'rank' => '10位',
+            'result' => 'ちょっとした気のゆるみで大きなミスを犯すことも',
+            'color' => '緑'
+        ]);
 
         $sukkirisuView = new Sukkirisu\ConsoleViewer($crawlerStub);
         $sukkirisuView->show();
