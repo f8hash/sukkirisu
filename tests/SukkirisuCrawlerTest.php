@@ -34,10 +34,10 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
-        $this->assertContains('7', $result);
-        $this->assertContains('3位', $result);
-        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $result);
-        $this->assertContains('茶', $result);
+        $this->assertEquals('7', $result['month']);
+        $this->assertEquals('3位', $result['rank']);
+        $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
+        $this->assertEquals('茶', $result['color']);
     }
 
     /**
@@ -66,10 +66,10 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
-        $this->assertContains('7', $result);
-        $this->assertContains('8位', $result);
-        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $result);
-        $this->assertContains('茶', $result);
+        $this->assertEquals('7', $result['month']);
+        $this->assertEquals('8位', $result['rank']);
+        $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
+        $this->assertEquals('茶', $result['color']);
     }
 
     /**
@@ -98,9 +98,10 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
-        $this->assertContains('7', $result);
-        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $result);
-        $this->assertContains('茶', $result);
+        $this->assertEquals('7', $result['month']);
+        $this->assertEquals('1位', $result['rank']);
+        $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
+        $this->assertEquals('茶', $result['color']);
     }
 
     /**
@@ -129,8 +130,9 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
-        $this->assertContains('7', $result);
-        $this->assertContains('暑くなって体が弱っているので睡眠をしっかり', $result);
-        $this->assertContains('茶', $result);
+        $this->assertEquals('7', $result['month']);
+        $this->assertEquals('12位', $result['rank']);
+        $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
+        $this->assertEquals('茶', $result['color']);
     }
 }
