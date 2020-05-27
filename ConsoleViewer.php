@@ -18,6 +18,6 @@ class ConsoleViewer implements ViewerInterface
     {
       $array = $this->crawler->get();
       
-      echo $array[0].'月生まれは'.$array[1].'。'.$array[2].'。ラッキーカラーは'.$array[3];
+      echo $array['month'].'月生まれは'.$array['rank'].'。'.$array['result'].'。ラッキーカラーは'.$array['color'];
     }
 }
