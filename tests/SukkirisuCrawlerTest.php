@@ -34,6 +34,7 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
+        $this->assertEquals('スッキりす', $result['label']);
         $this->assertEquals('7', $result['month']);
         $this->assertEquals('3位', $result['rank']);
         $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
@@ -66,6 +67,7 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
+        $this->assertEquals('まあまあスッキりす', $result['label']);
         $this->assertEquals('7', $result['month']);
         $this->assertEquals('8位', $result['rank']);
         $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
@@ -98,6 +100,7 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
+        $this->assertEquals('超スッキりす', $result['label']);
         $this->assertEquals('7', $result['month']);
         $this->assertEquals('1位', $result['rank']);
         $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
@@ -130,6 +133,7 @@ class SukkirisuCrawlerTest extends TestCase
         $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
+        $this->assertEquals('ガッカりす', $result['label']);
         $this->assertEquals('7', $result['month']);
         $this->assertEquals('12位', $result['rank']);
         $this->assertEquals('暑くなって体が弱っているので睡眠をしっかり', $result['result']);
