@@ -38,6 +38,7 @@ class SukkirisuCrawler implements CrawlerInterface
             if (count($crawler->filter($divId))) {
                 $data = explode(' ', $crawler->filter($divId)->text());
                 $ret['month'] = $data[0];
+                $ret['label'] = $type;
 
                 // 超スッキりす、ガッカりすは順位が渡ってこない
                 if (in_array($key, ['type1', 'type4'])) {
