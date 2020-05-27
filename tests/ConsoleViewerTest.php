@@ -12,10 +12,11 @@ class ConsoleViewerTest extends TestCase
      */
     public function まあまあスッキりすの結果表示(): void
     {
-        $this->expectOutputString('7月生まれは10位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
+        $this->expectOutputString('まあまあスッキりす！7月生まれは10位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 
         $crawlerStub = $this->createMock(Sukkirisu\CrawlerInterface::class);
         $crawlerStub->method('get')->willReturn([
+            'label' => 'まあまあスッキりす',
             'month' => '7',
             'rank' => '10位',
             'result' => 'ちょっとした気のゆるみで大きなミスを犯すことも',
@@ -31,10 +32,11 @@ class ConsoleViewerTest extends TestCase
      */
     public function 超スッキりすの結果表示(): void
     {
-        $this->expectOutputString('7月生まれは1位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
+        $this->expectOutputString('超スッキりす！7月生まれは1位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 
         $crawlerStub = $this->createMock(Sukkirisu\CrawlerInterface::class);
         $crawlerStub->method('get')->willReturn([
+            'label' => '超スッキりす',
             'month' => '7',
             'rank' => '1位',
             'result' => 'ちょっとした気のゆるみで大きなミスを犯すことも',
@@ -50,10 +52,11 @@ class ConsoleViewerTest extends TestCase
      */
     public function スッキりすの結果表示(): void
     {
-        $this->expectOutputString('7月生まれは5位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
+        $this->expectOutputString('スッキりす！7月生まれは5位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 
         $crawlerStub = $this->createMock(Sukkirisu\CrawlerInterface::class);
         $crawlerStub->method('get')->willReturn([
+            'label' => 'スッキりす',
             'month' => '7',
             'rank' => '5位',
             'result' => 'ちょっとした気のゆるみで大きなミスを犯すことも',
@@ -69,10 +72,11 @@ class ConsoleViewerTest extends TestCase
      */
     public function ガッカりすの結果表示(): void
     {
-        $this->expectOutputString('7月生まれは12位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
+        $this->expectOutputString('ガッカりす！7月生まれは12位。ちょっとした気のゆるみで大きなミスを犯すことも。ラッキーカラーは緑');
 
         $crawlerStub = $this->createMock(Sukkirisu\CrawlerInterface::class);
         $crawlerStub->method('get')->willReturn([
+            'label' => 'ガッカりす',
             'month' => '7',
             'rank' => '12位',
             'result' => 'ちょっとした気のゆるみで大きなミスを犯すことも',
