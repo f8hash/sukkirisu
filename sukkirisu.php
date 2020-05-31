@@ -9,7 +9,7 @@ use Goutte\Client;
 
 class Sukkirisu
 {
-    public function birthMonth(): void
+    public function birthMonthFortuneTelling(): void
     {
         $crawler = new SukkirisuCrawler(new Client());
         $viewer = new ConsoleViewer($crawler);
