@@ -10,7 +10,7 @@ http://www.ntv.co.jp/sukkiri/sukkirisu/index.html
 
 ## 使い方
 ```
-$ php sukkirisu.php
+$ php index.php
 スッキりす！7月生まれは6位。苦手な事にチャレンジすると克服できるチャンス。ラッキーカラーは青
 ```
 
