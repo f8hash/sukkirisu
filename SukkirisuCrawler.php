@@ -2,7 +2,7 @@
 
 namespace Sukkirisu;
 
-use Goutte\Client;
+use HeadlessChromium\BrowserFactory;
 
 require_once('CrawlerInterface.php');
 
@@ -12,7 +12,7 @@ class SukkirisuCrawler implements CrawlerInterface
 
     private $month;
 
-    public function __construct(Client $client)
+    public function __construct(BrowserFactory $client)
     {
         $this->url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
         $this->month = 7;
