@@ -3,62 +3,36 @@
 namespace Sukkirisu;
 
 use HeadlessChromium\BrowserFactory;
+use DOMWrap\Document;
 
 require_once('CrawlerInterface.php');
 
+// TODO 外部ライブラリを自作のクラスに隠蔽
 class SukkirisuCrawler implements CrawlerInterface
 {
-    private $url;
-
-    private $month;
-
-    public function __construct(BrowserFactory $client)
+    public function __construct(BrowserFactory $browserFactory, Document $doc)
     {
-        $this->url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
-        $this->month = 7;
-        $this->client = $client;
+        $this->browserFactory = $browserFactory;
+
+        $this->doc = $doc;
     }
 
     public function get(): array
     {
-        $crawler = $this->client->request('GET', $this->url);
+        $browser = $this->browserFactory->createBrowser();
+        $page = $browser->createPage();
+        // TODO URLをベタにしない
+        $page->navigate('http://www.ntv.co.jp/sukkiri/sukkirisu/index.html')->waitForNavigation();
+        $evaluation = $page->evaluate('document.documentElement.innerHTML');
+        $value = $evaluation->getReturnValue();
+        $browser->close();
 
-        // 超スッキりすからガッカりすまでで4段階ある
-        $types = [
-            'type1' => '超スッキりす',
-            'type2' => 'スッキりす',
-            'type3' => 'まあまあスッキりす',
-            'type4' => 'ガッカりす',
-        ];
+        $node = $this->doc->html($value);
 
-        $ret = [];
-        foreach ($types as $key => $type) {
-            $divId = "#main #month{$this->month}.{$key}";
+        // TODO 各月の結果を解析
+        $text = $node->find('article')->text();
 
-            if (!count($crawler->filter($divId))) {
-                continue;
-            }
-            
-            $data = explode(' ', $crawler->filter($divId)->text());
-            $ret['month'] = $data[0];
-            $ret['label'] = $type;
-
-            // 超スッキりす、ガッカりすは順位が渡ってこない
-            if (in_array($key, ['type1', 'type4'])) {
-                $ret['rank'] = ($key == 'type1') ? '1位' : '12位';
-                $ret['result'] = $data[1];
-                $ret['color'] = $data[2];
-            } else {
-                $ret['rank'] = $data[1];
-                $ret['result'] = $data[2];
-                $ret['color'] = $data[3];
-            }
-        }
-
-        // TODO スクレイピング先に変更があった場合、想定していた位置に要素がなくなる
-        // if (empty($ret)) {
-        //     throw new Exception('ページの任意の要素に結果が存在しない。');
-        // }
+        var_dump($text);exit;
 
         return $ret;
     }
