@@ -13,7 +13,7 @@ class Sukkirisu
     public function birthMonthFortuneTelling(): void
     {
         // Chromeがなぜか参照できなかったのでChromiumを使う
-        $crawler = new SukkirisuCrawler(new BrowserFactory("chromium"), new Document);
+        $crawler = new SukkirisuCrawler(new BrowserFactory, new Document);
         $viewer = new ConsoleViewer($crawler);
         $viewer->show();
     }
