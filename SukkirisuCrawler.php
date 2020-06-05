@@ -1,7 +1,5 @@
 <?php
 
-namespace Sukkirisu;
-
 use HeadlessChromium\BrowserFactory;
 use DOMWrap\Document;
 

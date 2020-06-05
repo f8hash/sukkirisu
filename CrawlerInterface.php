@@ -1,7 +1,5 @@
 <?php
 
-namespace Sukkirisu;
-
 use Goutte\Client;
 
 Interface CrawlerInterface

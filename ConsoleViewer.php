@@ -1,7 +1,5 @@
 <?php
 
-namespace Sukkirisu;
-
 require_once('ViewerInterface.php');
 require_once('CrawlerInterface.php');
 

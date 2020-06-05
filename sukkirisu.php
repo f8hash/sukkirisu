@@ -1,7 +1,5 @@
 <?php
 
-namespace Sukkirisu;
-
 require_once './ConsoleViewer.php';
 require_once './SukkirisuCrawler.php';
 
