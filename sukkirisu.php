@@ -10,10 +10,7 @@ class Sukkirisu
     public function birthMonthFortuneTelling(): void
     {
         // webサイトからhtmlを取得
-        $site = new SukkirisuSite;
-        $crawler = new SukkirisuCrawler;
-
-        $teller = new BirthMonthFortuneTeller($crawler->get($site), $site);
+        $teller = new BirthMonthFortuneTeller(new SukkirisuCrawler, new SukkirisuSite);
 
         // 表示
         $viewer = new ConsoleViewer();
