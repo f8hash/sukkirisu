@@ -7,15 +7,10 @@ require_once('CrawlerInterface.php');
 
 class SukkirisuCrawler implements CrawlerInterface
 {
-    public function __construct()
+    public function get(SiteInterface $site): array
     {
-        $this->browserFactory = new BrowserFactory;
-        $this->document = new Document;
-    }
-
-    public function get(SiteInterface $site): Document
-    {
-        $browser = $this->browserFactory->createBrowser();
+        $browserFactory = new BrowserFactory;
+        $browser = $browserFactory->createBrowser();
         $page = $browser->createPage();
 
         $page->navigate($site->url())->waitForNavigation();
@@ -24,11 +19,16 @@ class SukkirisuCrawler implements CrawlerInterface
         $value = $evaluation->getReturnValue();
         $browser->close();
 
-        return $this->html($value);
+        $this->html($value)->find($site->selector())->each(function ($node) use (&$rows) {
+            $rows[] = explode(' ', $node->text());
+        });
+
+        return $rows;
     }
 
-    private function html($html)
+    private function html($html): Document
     {
-        return $this->document->html($html);
+        $document = new Document;
+        return $document->html($html);
     }
 }

@@ -15,15 +15,12 @@ class BirthMonthFortuneTeller implements FortuneTellerInterface
 
     public function __construct(CrawlerInterface $crawler, SiteInterface $site)
     {
-        $nodes = $crawler->get($site);
 
         // サイト上での順位の順番
         $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
 
         $rows = [];
-        $nodes->find($site->selector())->each(function ($node) use (&$rows) {
-            $rows[] = explode(' ', $node->text());
-        });
+        $rows = $crawler->get($site);
 
         $result = array_combine($ranking, $rows);
 
