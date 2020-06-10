@@ -11,7 +11,7 @@ class SukkirisuSite implements SiteInterface
     public function __construct()
     {
         $this->url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
-        $this->selector = 'p.month';
+        $this->selector = 'div.ntv-article-contents-main > div > div';
     }
 
     public function url(): string
