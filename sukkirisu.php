@@ -9,8 +9,14 @@ class Sukkirisu
 {
     public function birthMonthFortuneTelling(): void
     {
-        $crawler = new SukkirisuCrawler(new BrowserFactory, new Document, new SukkirisuSite);
-        $viewer = new ConsoleViewer($crawler);
-        $viewer->show();
+        // webサイトからhtmlを取得
+        $site = new SukkirisuSite;
+        $crawler = new SukkirisuCrawler;
+
+        $teller = new BirthMonthFortuneTeller($crawler->get($site), $site);
+
+        // 表示
+        $viewer = new ConsoleViewer();
+        $viewer->show($teller);
     }
 }
