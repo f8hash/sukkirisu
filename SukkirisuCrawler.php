@@ -11,7 +11,7 @@ class SukkirisuCrawler implements CrawlerInterface
         $this->browserFactory = new BrowserFactory;
     }
 
-    public function get(Site $site): string
+    public function get(SiteInterface $site): string
     {
         $browser = $this->browserFactory->createBrowser();
         $page = $browser->createPage();

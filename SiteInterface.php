@@ -1,6 +1,6 @@
 <?php
 
-interface Site
+interface SiteInterface
 {
     public function url();
 

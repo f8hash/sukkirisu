@@ -2,7 +2,7 @@
 
 require_once('SiteInterface.php');
 
-class SukkirisuSite implements Site
+class SukkirisuSite implements SiteInterface
 {
     private $url;
 
