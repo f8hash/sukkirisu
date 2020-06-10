@@ -7,6 +7,7 @@ use DOMWrap\Document;
 
 class BirthMonthFortuneTeller implements FortuneTellerInterface
 {
+    // 以下の要素を読み取るクラス
     private $rank;
     private $month;
     private $comment;
@@ -15,8 +16,7 @@ class BirthMonthFortuneTeller implements FortuneTellerInterface
 
     public function __construct(CrawlerInterface $crawler, SiteInterface $site)
     {
-
-        // サイト上での順位の順番
+        // TODO サイト上での順位の順番はサイトクラスへ
         $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
 
         $rows = [];
@@ -29,7 +29,10 @@ class BirthMonthFortuneTeller implements FortuneTellerInterface
             array_shift($result[$i]);
         }
 
+        // TODO 外に定数で定義
         $birthMonth = '7月';
+
+        // $res[0 => 月, 1 => 占い結果, 2 => 色]
         foreach ($result as $rank => $res) {
 
             // 誕生月をセットしたいのでそれ以外は無視
@@ -41,6 +44,8 @@ class BirthMonthFortuneTeller implements FortuneTellerInterface
             $this->month = $res[0];
             $this->comment = $res[1];
             $this->color = $res[2];
+
+            // TODO 超スッキりす、スッキりす、まあまあスッキりす、ガッカりすを順位から格納
             $this->label = '';
         }
     }
