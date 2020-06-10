@@ -1,11 +1,9 @@
 <?php
 
-require_once './ConsoleViewer.php';
-require_once './SukkirisuCrawler.php';
-require_once './SukkirisuSite.php';
-
-use HeadlessChromium\BrowserFactory;
-use DOMWrap\Document;
+require_once('ConsoleViewer.php');
+require_once('SukkirisuCrawler.php');
+require_once('SukkirisuSite.php');
+require_once('BirthMonthFortuneTeller.php');
 
 class Sukkirisu
 {
