@@ -1,23 +1,16 @@
 <?php
 
-namespace Sukkirisu;
-
 require_once('ViewerInterface.php');
-require_once('CrawlerInterface.php');
+require_once('FortuneTellerInterface.php');
 
 class ConsoleViewer implements ViewerInterface
 {
-    private $crawler;
-
-    public function __construct(CrawlerInterface $crawler)
+    public function show(FortuneTellerInterface $teller): void
     {
-        $this->crawler = $crawler;
-    }
-
-    public function show(): void
-    {
-      $array = $this->crawler->get();
-      
-      echo $array['label'].'！'.$array['month'].'月生まれは'.$array['rank'].'。'.$array['result'].'。ラッキーカラーは'.$array['color'];
+        echo $teller->label().'！'
+            .$teller->month().'生まれは'
+            .$teller->rank().'位。'
+            .$teller->comment().'。ラッキーカラーは'
+            .$teller->color();
     }
 }

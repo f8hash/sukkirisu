@@ -1,18 +1,19 @@
 <?php
 
-namespace Sukkirisu;
-
-require_once './ConsoleViewer.php';
-require_once './SukkirisuCrawler.php';
-
-use Goutte\Client;
+require_once('ConsoleViewer.php');
+require_once('SukkirisuCrawler.php');
+require_once('SukkirisuSite.php');
+require_once('BirthMonthFortuneTeller.php');
 
 class Sukkirisu
 {
     public function birthMonthFortuneTelling(): void
     {
-        $crawler = new SukkirisuCrawler(new Client());
-        $viewer = new ConsoleViewer($crawler);
-        $viewer->show();
+        // webサイトからhtmlを取得
+        $teller = new BirthMonthFortuneTeller(new SukkirisuCrawler, new SukkirisuSite);
+
+        // 表示
+        $viewer = new ConsoleViewer();
+        $viewer->show($teller);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Sukkirisu;
+require_once('FortuneTellerInterface.php');
 
 Interface ViewerInterface
 {
-    public function show();
+    public function show(FortuneTellerInterface $fortuneTeller);
 }

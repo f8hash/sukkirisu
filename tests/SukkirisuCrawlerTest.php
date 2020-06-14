@@ -1,8 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Goutte\Client;
-use Symfony\Component\DomCrawler\Crawler;
+use HeadlessChromium\BrowserFactory;
 
 require_once(dirname(__FILE__).'/../SukkirisuCrawler.php');
 
@@ -13,25 +12,9 @@ class SukkirisuCrawlerTest extends TestCase
      */
     public function スッキりす(): void
     {
-        // メソッドチェーンのモック化
-        // filter()->text()
-        $crawlerStub = $this->createMock(Crawler::class);
-        $crawlerStub->method('text')->willReturn('7 3位 暑くなって体が弱っているので睡眠をしっかり 茶');
-        
-        $crawlerStub->method('filter')->will(
-            $this->onConsecutiveCalls(
-                [], // #month7.type1の要素は存在しない
-                [[]], // #month7.type2の要素が存在する
-                $this->returnSelf(), // text()を呼び出すために自身を返す
-                [], // #month7.type3の要素は存在しない
-                [] // #month7.type4の要素は存在しない
-            )
-        );
+        $stub = $this->createMock(BrowserFactory::class);
 
-        $clientStub = $this->createMock(Client::class);
-        $clientStub->method('request')->willReturn($crawlerStub);
-
-        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
+        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($stub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
         $this->assertEquals('スッキりす', $result['label']);
@@ -46,25 +29,9 @@ class SukkirisuCrawlerTest extends TestCase
      */
     public function まあまあスッキりす(): void
     {
-        // メソッドチェーンのモック化
-        // filter()->text()
-        $crawlerStub = $this->createMock(Crawler::class);
-        $crawlerStub->method('text')->willReturn('7 8位 暑くなって体が弱っているので睡眠をしっかり 茶');
-        
-        $crawlerStub->method('filter')->will(
-            $this->onConsecutiveCalls(
-                [], // #month7.type1の要素は存在しない
-                [], // #month7.type2の要素は存在しない
-                [[]], // #month7.type3の要素が存在する
-                $this->returnSelf(), // text()を呼び出すために自身を返す
-                [] // #month7.type4の要素は存在しない
-            )
-        );
+        $stub = $this->createMock(BrowserFactory::class);
 
-        $clientStub = $this->createMock(Client::class);
-        $clientStub->method('request')->willReturn($crawlerStub);
-
-        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
+        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($stub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
         $this->assertEquals('まあまあスッキりす', $result['label']);
@@ -79,25 +46,9 @@ class SukkirisuCrawlerTest extends TestCase
      */
     public function 超スッキりす(): void
     {
-        // メソッドチェーンのモック化
-        // filter()->text()
-        $crawlerStub = $this->createMock(Crawler::class);
-        $crawlerStub->method('text')->willReturn('7 暑くなって体が弱っているので睡眠をしっかり 茶');
-        
-        $crawlerStub->method('filter')->will(
-            $this->onConsecutiveCalls(
-                [[]], // #month7.type1の要素が存在する
-                $this->returnSelf(), // text()を呼び出すために自身を返す
-                [], // #month7.type2の要素は存在しない
-                [], // #month7.type3の要素は存在しない
-                [] // #month7.type4の要素は存在しない
-            )
-        );
+        $stub = $this->createMock(BrowserFactory::class);
 
-        $clientStub = $this->createMock(Client::class);
-        $clientStub->method('request')->willReturn($crawlerStub);
-
-        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
+        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($stub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
         $this->assertEquals('超スッキりす', $result['label']);
@@ -112,25 +63,9 @@ class SukkirisuCrawlerTest extends TestCase
      */
     public function ガッカりす(): void
     {
-        // メソッドチェーンのモック化
-        // filter()->text()
-        $crawlerStub = $this->createMock(Crawler::class);
-        $crawlerStub->method('text')->willReturn('7 暑くなって体が弱っているので睡眠をしっかり 茶');
-        
-        $crawlerStub->method('filter')->will(
-            $this->onConsecutiveCalls(
-                [], // #month7.type1の要素は存在しない
-                [], // #month7.type2の要素は存在しない
-                [], // #month7.type3の要素は存在しない
-                [[]], // #month7.type4の要素が存在する
-                $this->returnSelf(), // text()を呼び出すために自身を返す
-            )
-        );
+        $stub = $this->createMock(BrowserFactory::class);
 
-        $clientStub = $this->createMock(Client::class);
-        $clientStub->method('request')->willReturn($crawlerStub);
-
-        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($clientStub);
+        $sukkirisuCrawler = new Sukkirisu\SukkirisuCrawler($stub);
         $result = $sukkirisuCrawler->get();
         $this->assertIsArray($result);
         $this->assertEquals('ガッカりす', $result['label']);
