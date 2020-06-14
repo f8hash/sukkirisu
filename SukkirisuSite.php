@@ -48,9 +48,16 @@ class SukkirisuSite implements SiteInterface
         return $this->label[$rank];
     }
 
-    public function ranking(): array
+    public function ranking(Array $array): array
     {
-        return $this->ranking;
+        $ret = array_combine($this->ranking, $array);
+        
+        // 1位、12位以外は要素が一つ多いので1位、12位に合わせる
+        for ($i = 2; $i < 12; $i++) {
+            array_shift($ret[$i]);
+        }
+
+        return $ret;
     }
 
     public function rowKeys(): array
