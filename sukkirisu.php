@@ -14,7 +14,6 @@ class Sukkirisu implements FortuneTellerInterface
 
     public function __construct(CrawlerInterface $crawler, SiteInterface $site)
     {
-        $rows = [];
         $rows = $crawler->get($site);
 
         $result = array_combine($site->ranking(), $rows);

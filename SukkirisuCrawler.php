@@ -19,6 +19,7 @@ class SukkirisuCrawler implements CrawlerInterface
         $value = $evaluation->getReturnValue();
         $browser->close();
 
+        $rows = [];
         $this->html($value)->find($site->selector())->each(function ($node) use (&$rows) {
             $rows[] = explode(' ', $node->text());
         });
