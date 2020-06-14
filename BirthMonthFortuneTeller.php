@@ -48,28 +48,14 @@ class BirthMonthFortuneTeller implements FortuneTellerInterface
         }
     }
 
-    public function rank(): int
+    public function tell(): array
     {
-        return $this->rank;
-    }
-
-    public function month(): string
-    {
-        return $this->month;
-    }
-
-    public function comment(): string
-    {
-        return $this->comment;
-    }
-
-    public function color(): string
-    {
-        return $this->color;
-    }
-
-    public function label(): string
-    {
-        return $this->label;
+        return [
+            $this->label.'！',
+            $this->month.'生まれは',
+            $this->rank.'位。',
+            $this->comment.'。ラッキーカラーは',
+            $this->color,
+        ];
     }
 }
