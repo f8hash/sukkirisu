@@ -7,7 +7,7 @@ require_once('SukkirisuSite.php');
 require_once('ConsoleViewer.php');
 
 // webサイトからhtmlを取得
-$teller = new Sukkirisu(new SukkirisuCrawler, new SukkirisuSite);
+$teller = new Sukkirisu(new SukkirisuSite, new SukkirisuCrawler);
 
 // 表示
 $viewer = new ConsoleViewer;

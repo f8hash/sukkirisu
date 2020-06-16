@@ -8,6 +8,8 @@ class SukkirisuSite implements SiteInterface
 
     private $selector = 'div.ntv-article-contents-main > div > div';
 
+    private $html;
+
     private $label = [
         1 =>  '超スッキりす',
         2 =>  'スッキりす',
@@ -48,6 +50,11 @@ class SukkirisuSite implements SiteInterface
         return $this->label[$rank];
     }
 
+    public function html(): string
+    {
+        return $this->html;
+    }
+
     public function ranking(Array $array): array
     {
         $ret = array_combine($this->ranking, $array);
@@ -63,5 +70,10 @@ class SukkirisuSite implements SiteInterface
     public function rowKeys(): array
     {
         return $this->rowKeys;
+    }
+
+    public function crawling(CrawlerInterface $crawler): void
+    {
+        $this->html = $crawler->get($this->url());
     }
 }

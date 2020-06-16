@@ -2,6 +2,8 @@
 
 require_once('FortuneTellerInterface.php');
 
+use DOMWrap\Document;
+
 // TODO スッキりす用の派生クラスを作成
 class Sukkirisu implements FortuneTellerInterface
 {
@@ -12,9 +14,17 @@ class Sukkirisu implements FortuneTellerInterface
     private $color;
     private $label;
 
-    public function __construct(CrawlerInterface $crawler, SiteInterface $site)
+    public function __construct(SiteInterface $site, CrawlerInterface $crawler)
     {
-        $rows = $crawler->get($site);
+        $site->crawling($crawler);
+
+        $document = new Document;
+        $html = $document->html($site->html());
+        
+        $rows = [];
+        $html->find($site->selector())->each(function ($node) use (&$rows) {
+            $rows[] = explode(' ', $node->text());
+        });
 
         $ranking = $site->ranking($rows);
 
