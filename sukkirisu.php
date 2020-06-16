@@ -15,6 +15,13 @@ class Sukkirisu implements FortuneTellerInterface
     // ページ内のランキングの表示順
     private $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
 
+    // ページ内の要素を配列にした際のキー
+    private $elements = [
+        'month'     => 0,
+        'comment'   => 1,
+        'color'     => 2,
+    ];
+
     public function __construct(SiteInterface $site)
     {
         $rows = $site->scraping();
@@ -24,20 +31,17 @@ class Sukkirisu implements FortuneTellerInterface
         // TODO 外に定数で定義
         $birthMonth = '7月';
 
-        // $res[0 => 月, 1 => 占い結果, 2 => 色]
-        $rowKeys = $site->rowKeys();
-
         foreach ($ranking as $rank => $res) {
 
             // 誕生月をセットしたいのでそれ以外は無視
-            if ($birthMonth !== $res[$rowKeys['month']]) {
+            if ($birthMonth !== $res[$this->elements['month']]) {
                 continue;
             }
 
             $this->rank = $rank;
-            $this->month = $res[$rowKeys['month']];
-            $this->comment = $res[$rowKeys['comment']];
-            $this->color = $res[$rowKeys['color']];
+            $this->month = $res[$this->elements['month']];
+            $this->comment = $res[$this->elements['comment']];
+            $this->color = $res[$this->elements['color']];
             $this->label = $site->label($rank);
         }
     }

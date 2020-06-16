@@ -29,13 +29,6 @@ class SukkirisuSite implements SiteInterface
         12 => 'ガッカりす',
     ];
 
-    // ページ内の要素を配列にした際のキー
-    private $rowKeys = [
-        'month'     => 0,
-        'comment'   => 1,
-        'color'     => 2,
-    ];
-
     public function label($rank): string
     {
         return $this->label[$rank];
