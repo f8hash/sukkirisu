@@ -2,7 +2,6 @@
 
 require_once('FortuneTellerInterface.php');
 
-// TODO スッキりす用の派生クラスを作成
 class Sukkirisu implements FortuneTellerInterface
 {
     // 以下の要素を読み取るクラス
@@ -36,11 +35,6 @@ class Sukkirisu implements FortuneTellerInterface
         11 => 'まあまあスッキりす',
         12 => 'ガッカりす',
     ];
-
-    private function label($rank): string
-    {
-        return $this->label_list[$rank];
-    }
 
     public function __construct(SiteInterface $site)
     {
@@ -87,5 +81,10 @@ class Sukkirisu implements FortuneTellerInterface
         }
 
         return $ret;
+    }
+
+    private function label($rank): string
+    {
+        return $this->label_list[$rank];
     }
 }
