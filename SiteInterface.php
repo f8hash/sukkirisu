@@ -2,7 +2,5 @@
 
 interface SiteInterface
 {
-    public function url();
-
-    public function selector();
+    public function scraping();
 }

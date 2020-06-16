@@ -4,6 +4,8 @@ require_once('SiteInterface.php');
 
 require_once('SukkirisuCrawler.php');
 
+use DOMWrap\Document;
+
 class SukkirisuSite implements SiteInterface
 {
     private $url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
@@ -37,24 +39,9 @@ class SukkirisuSite implements SiteInterface
         'color'     => 2,
     ];
 
-    public function url(): string
-    {
-        return $this->url;
-    }
-
-    public function selector(): string
-    {
-        return $this->selector;
-    }
-
     public function label($rank): string
     {
         return $this->label[$rank];
-    }
-
-    public function html(): string
-    {
-        return $this->html;
     }
 
     public function ranking(Array $array): array
@@ -74,9 +61,24 @@ class SukkirisuSite implements SiteInterface
         return $this->rowKeys;
     }
 
-    public function crawling(): void
+    private function crawling(): void
     {
         $crawler = new SukkirisuCrawler;
-        $this->html = $crawler->get($this->url());
+        $this->html = $crawler->get($this->url);
+    }
+
+    public function scraping(): array
+    {
+        $parser = new Document;
+
+        $this->crawling();
+        $html = $parser->html($this->html);
+        
+        $rows = [];
+        $html->find($this->selector)->each(function ($node) use (&$rows) {
+            $rows[] = explode(' ', $node->text());
+        });
+
+        return $rows;
     }
 }
