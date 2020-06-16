@@ -14,9 +14,9 @@ class Sukkirisu implements FortuneTellerInterface
     private $color;
     private $label;
 
-    public function __construct(SiteInterface $site, CrawlerInterface $crawler)
+    public function __construct(SiteInterface $site)
     {
-        $site->crawling($crawler);
+        $site->crawling();
 
         $document = new Document;
         $html = $document->html($site->html());

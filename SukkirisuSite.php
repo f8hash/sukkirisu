@@ -2,6 +2,8 @@
 
 require_once('SiteInterface.php');
 
+require_once('SukkirisuCrawler.php');
+
 class SukkirisuSite implements SiteInterface
 {
     private $url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
@@ -72,8 +74,9 @@ class SukkirisuSite implements SiteInterface
         return $this->rowKeys;
     }
 
-    public function crawling(CrawlerInterface $crawler): void
+    public function crawling(): void
     {
+        $crawler = new SukkirisuCrawler;
         $this->html = $crawler->get($this->url());
     }
 }
