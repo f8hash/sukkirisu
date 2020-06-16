@@ -22,6 +22,26 @@ class Sukkirisu implements FortuneTellerInterface
         'color'     => 2,
     ];
 
+    private $label_list = [
+        1 =>  '超スッキりす',
+        2 =>  'スッキりす',
+        3 =>  'スッキりす',
+        4 =>  'スッキりす',
+        5 =>  'スッキりす',
+        6 =>  'スッキりす',
+        7 =>  'まあまあスッキりす',
+        8 =>  'まあまあスッキりす',
+        9 =>  'まあまあスッキりす',
+        10 => 'まあまあスッキりす',
+        11 => 'まあまあスッキりす',
+        12 => 'ガッカりす',
+    ];
+
+    private function label($rank): string
+    {
+        return $this->label_list[$rank];
+    }
+
     public function __construct(SiteInterface $site)
     {
         $rows = $site->scraping();
@@ -42,7 +62,7 @@ class Sukkirisu implements FortuneTellerInterface
             $this->month = $res[$this->elements['month']];
             $this->comment = $res[$this->elements['comment']];
             $this->color = $res[$this->elements['color']];
-            $this->label = $site->label($rank);
+            $this->label = $this->label($rank);
         }
     }
 
