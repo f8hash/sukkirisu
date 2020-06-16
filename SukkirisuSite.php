@@ -29,9 +29,6 @@ class SukkirisuSite implements SiteInterface
         12 => 'ガッカりす',
     ];
 
-    // ページ内のランキングの表示順
-    private $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
-
     // ページ内の要素を配列にした際のキー
     private $rowKeys = [
         'month'     => 0,
@@ -42,18 +39,6 @@ class SukkirisuSite implements SiteInterface
     public function label($rank): string
     {
         return $this->label[$rank];
-    }
-
-    public function ranking(Array $array): array
-    {
-        $ret = array_combine($this->ranking, $array);
-        
-        // 1位、12位以外は要素が一つ多いので1位、12位に合わせる
-        for ($i = 2; $i < 12; $i++) {
-            array_shift($ret[$i]);
-        }
-
-        return $ret;
     }
 
     public function rowKeys(): array

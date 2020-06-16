@@ -12,11 +12,14 @@ class Sukkirisu implements FortuneTellerInterface
     private $color;
     private $label;
 
+    // ページ内のランキングの表示順
+    private $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
+
     public function __construct(SiteInterface $site)
     {
         $rows = $site->scraping();
 
-        $ranking = $site->ranking($rows);
+        $ranking = $this->ranking($rows);
 
         // TODO 外に定数で定義
         $birthMonth = '7月';
@@ -48,5 +51,17 @@ class Sukkirisu implements FortuneTellerInterface
             $this->comment.'。ラッキーカラーは',
             $this->color,
         ];
+    }
+
+    private function ranking(Array $array): array
+    {
+        $ret = array_combine($this->ranking, $array);
+        
+        // 1位、12位以外は要素が一つ多いので1位、12位に合わせる
+        for ($i = 2; $i < 12; $i++) {
+            array_shift($ret[$i]);
+        }
+
+        return $ret;
     }
 }
