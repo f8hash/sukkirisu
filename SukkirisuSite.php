@@ -11,11 +11,13 @@ class SukkirisuSite implements SiteInterface
 
     private $selector = 'div.ntv-article-contents-main > div > div';
 
-    private $html;
+    private $html = '';
 
     private function html(): string
     {
-        $this->crawling();
+        if (empty($this->html)) {
+            $this->crawling();
+        }
         return $this->html;
     }
 

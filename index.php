@@ -10,4 +10,5 @@ $teller = new Sukkirisu(new SukkirisuSite);
 
 // 表示
 $viewer = new ConsoleViewer;
-$viewer->show($teller);
+$viewer->show($teller, '7月');
+$viewer->show($teller, '10月');

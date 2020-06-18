@@ -4,12 +4,7 @@ require_once('FortuneTellerInterface.php');
 
 class Sukkirisu implements FortuneTellerInterface
 {
-    // 以下の要素を読み取るクラス
-    private $rank;
-    private $month;
-    private $comment;
-    private $color;
-    private $label;
+    private $result;
 
     // ページ内のランキングの表示順
     private $ranking = [2,3,4,5,6,7,8,9,10,11,1,12];
@@ -36,32 +31,22 @@ class Sukkirisu implements FortuneTellerInterface
         12 => 'ガッカりす',
     ];
 
-    public function __construct(SiteInterface $site, $birthMonth = '7月')
+    public function __construct(SiteInterface $site)
     {
         foreach ($this->ranking_list($site->scraping()) as $rank => $res) {
-
-            // 誕生月をセットしたいのでそれ以外は無視
-            if ($birthMonth !== $res[$this->elements['month']]) {
-                continue;
-            }
-
-            $this->rank = $rank;
-            $this->month = $res[$this->elements['month']];
-            $this->comment = $res[$this->elements['comment']];
-            $this->color = $res[$this->elements['color']];
-            $this->label = $this->label($rank);
+            $this->result[$res[$this->elements['month']]] =
+                    "{$this->label($rank)}!"
+                    . "{$res[$this->elements['month']]}生まれは"
+                    . "{$rank}位。"
+                    . "{$res[$this->elements['comment']]}。"
+                    . "ラッキーカラーは{$res[$this->elements['color']]}"
+                    . PHP_EOL;
         }
     }
 
-    public function tell(): array
+    public function tell($birthMonth = '1月'): string
     {
-        return [
-            $this->label.'！',
-            $this->month.'生まれは',
-            $this->rank.'位。',
-            $this->comment.'。ラッキーカラーは',
-            $this->color,
-        ];
+        return $this->result[$birthMonth];
     }
 
     private function ranking_list(Array $array): array
