@@ -36,11 +36,8 @@ class Sukkirisu implements FortuneTellerInterface
         12 => 'ガッカりす',
     ];
 
-    public function __construct(SiteInterface $site)
+    public function __construct(SiteInterface $site, $birthMonth = '7月')
     {
-        // TODO 外に定数で定義
-        $birthMonth = '7月';
-
         foreach ($this->ranking_list($site->scraping()) as $rank => $res) {
 
             // 誕生月をセットしたいのでそれ以外は無視
