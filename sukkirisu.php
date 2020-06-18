@@ -38,14 +38,10 @@ class Sukkirisu implements FortuneTellerInterface
 
     public function __construct(SiteInterface $site)
     {
-        $rows = $site->scraping();
-
-        $ranking = $this->ranking($rows);
-
         // TODO 外に定数で定義
         $birthMonth = '7月';
 
-        foreach ($ranking as $rank => $res) {
+        foreach ($this->ranking_list($site->scraping()) as $rank => $res) {
 
             // 誕生月をセットしたいのでそれ以外は無視
             if ($birthMonth !== $res[$this->elements['month']]) {
@@ -71,16 +67,16 @@ class Sukkirisu implements FortuneTellerInterface
         ];
     }
 
-    private function ranking(Array $array): array
+    private function ranking_list(Array $array): array
     {
-        $ret = array_combine($this->ranking, $array);
+        $ranking_list = array_combine($this->ranking, $array);
         
         // 1位、12位以外は要素が一つ多いので1位、12位に合わせる
-        for ($i = 2; $i < 12; $i++) {
-            array_shift($ret[$i]);
+        for ($rank = 2; $rank < 12; $rank++) {
+            array_shift($ranking_list[$rank]);
         }
 
-        return $ret;
+        return $ranking_list;
     }
 
     private function label($rank): string
