@@ -3,8 +3,7 @@
 require_once('SiteInterface.php');
 
 require_once('SukkirisuCrawler.php');
-
-use DOMWrap\Document;
+require_once('SukkirisuParser.php');
 
 class SukkirisuSite implements SiteInterface
 {
@@ -14,6 +13,12 @@ class SukkirisuSite implements SiteInterface
 
     private $html;
 
+    private function html(): string
+    {
+        $this->crawling();
+        return $this->html;
+    }
+
     private function crawling(): void
     {
         $crawler = new SukkirisuCrawler;
@@ -22,16 +27,7 @@ class SukkirisuSite implements SiteInterface
 
     public function scraping(): array
     {
-        $parser = new Document;
-
-        $this->crawling();
-        $html = $parser->html($this->html);
-        
-        $rows = [];
-        $html->find($this->selector)->each(function ($node) use (&$rows) {
-            $rows[] = explode(' ', $node->text());
-        });
-
-        return $rows;
+        $parser = new SukkirisuParser;
+        return $parser->find($this->html(), $this->selector);
     }
 }
