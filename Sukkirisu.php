@@ -1,6 +1,6 @@
 <?php
 
-require_once('FortuneTellerInterface.php');
+require_once('Interface/FortuneTellerInterface.php');
 
 class Sukkirisu implements FortuneTellerInterface
 {

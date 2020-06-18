@@ -1,6 +1,6 @@
 <?php
 
-require_once('ViewerInterface.php');
+require_once('Interface/ViewerInterface.php');
 
 class ConsoleViewer implements ViewerInterface
 {

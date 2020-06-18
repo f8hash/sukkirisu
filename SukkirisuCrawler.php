@@ -2,7 +2,7 @@
 
 use HeadlessChromium\BrowserFactory;
 
-require_once('CrawlerInterface.php');
+require_once('Interface/CrawlerInterface.php');
 
 class SukkirisuCrawler implements CrawlerInterface
 {

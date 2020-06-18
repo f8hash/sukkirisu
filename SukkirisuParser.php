@@ -1,8 +1,10 @@
 <?php
 
+require_once('Interface/ParserInterface.php');
+
 use DOMWrap\Document;
 
-class SukkirisuParser
+class SukkirisuParser implements ParserInterface
 {
     private $document;
 
