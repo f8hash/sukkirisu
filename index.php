@@ -10,4 +10,4 @@ $teller = new Sukkirisu(new SukkirisuSite);
 
 // 表示
 $viewer = new ConsoleViewer;
-$viewer->show($teller->tell());
+$viewer->show($teller);

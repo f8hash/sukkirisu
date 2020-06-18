@@ -2,5 +2,5 @@
 
 Interface ViewerInterface
 {
-    public function show(Array $array);
+    public function show(FortuneTellerInterface $teller);
 }
