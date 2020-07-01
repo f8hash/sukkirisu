@@ -6,10 +6,16 @@ require_once('Interface/CrawlerInterface.php');
 
 class SukkirisuCrawler implements CrawlerInterface
 {
+    private $browserFactory;
+
+    public function __construct()
+    {
+        $this->browserFactory = new browserFactory;
+    }
+
     public function get($url): string
     {
-        $browserFactory = new BrowserFactory;
-        $browser = $browserFactory->createBrowser();
+        $browser = $this->browserFactory->createBrowser();
         $page = $browser->createPage();
 
         $page->navigate($url)->waitForNavigation();
