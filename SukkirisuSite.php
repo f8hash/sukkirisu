@@ -9,11 +9,9 @@ class SukkirisuSite implements SiteInterface
 {
     private $url = 'http://www.ntv.co.jp/sukkiri/sukkirisu/index.html';
 
-    private $selector = 'div.ntv-article-contents-main > div > div';
-
     private $html = '';
 
-    private function html(): string
+    public function html(): string
     {
         if (empty($this->html)) {
             $this->crawling();
@@ -25,11 +23,5 @@ class SukkirisuSite implements SiteInterface
     {
         $crawler = new SukkirisuCrawler;
         $this->html = $crawler->get($this->url);
-    }
-
-    public function scraping(): array
-    {
-        $parser = new SukkirisuParser;
-        return $parser->find($this->html(), $this->selector);
     }
 }

@@ -2,5 +2,5 @@
 
 interface SiteInterface
 {
-    public function scraping();
+    public function html();
 }
