@@ -14,7 +14,7 @@ $ php index.php
 スッキりす！7月生まれは6位。苦手な事にチャレンジすると克服できるチャンス。ラッキーカラーは青
 ```
 
-## テスト実行
+## テスト実行（未実装）
 ```
 ./vendor/bin/phpunit tests/SampleTest.php
 PHPUnit 9.1.4 by Sebastian Bergmann and contributors.
@@ -27,7 +27,8 @@ OK (1 test, 1 assertion)
 ```
 
 ## 今後やりたいこと
-- 表示を整える
-- 超スッキりす、ガッカりすへの対応
-- sukkirisu型
-- 別言語（Goとか）で書き換え
+- [x] 表示を整える
+- [x] 超スッキりす、ガッカりすへの対応
+- [x] sukkirisu型
+    - 実装として存在させる
+- [ ] 別言語（Goとか）で書き換え
