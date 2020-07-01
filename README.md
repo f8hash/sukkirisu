@@ -10,6 +10,12 @@ http://www.ntv.co.jp/sukkiri/sukkirisu/index.html
 
 ## 使い方
 ```
+$ php --version
+PHP 7.3.13 (cli) (built: Dec 18 2019 16:08:06) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.13, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.13, Copyright (c) 1999-2018, by Zend Technologies
+
 $ php index.php
 スッキりす！7月生まれは6位。苦手な事にチャレンジすると克服できるチャンス。ラッキーカラーは青
 ```
