@@ -1,14 +1,12 @@
 <?php
 
 require_once('vendor/autoload.php');
-require_once('Sukkirisu.php');
 require_once('SukkirisuSite.php');
+require_once('SukkirisuParser.php');
+require_once('SukkirisuScraper.php');
 require_once('ConsoleViewer.php');
 
-// webサイトからhtmlを取得
-$teller = new Sukkirisu(new SukkirisuSite);
-
-// 表示
 $viewer = new ConsoleViewer;
-$viewer->show($teller, '7月');
-$viewer->show($teller, '10月');
+$scraper = new SukkirisuScraper(new SukkirisuSite, new SukkirisuParser);
+$viewer->show($scraper, '7月');
+$viewer->show($scraper, '10月');
