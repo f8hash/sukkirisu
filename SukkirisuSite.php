@@ -1,9 +1,7 @@
 <?php
 
 require_once('Interface/SiteInterface.php');
-
 require_once('SukkirisuCrawler.php');
-require_once('SukkirisuParser.php');
 
 class SukkirisuSite implements SiteInterface
 {
