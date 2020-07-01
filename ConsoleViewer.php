@@ -4,8 +4,8 @@ require_once('Interface/ViewerInterface.php');
 
 class ConsoleViewer implements ViewerInterface
 {
-    public function show(FortuneTellerInterface $teller, $birth_month): void
+    public function show(ScraperInterface $scraper, $birth_month): void
     {
-        echo $teller->tell($birth_month);
+        echo $scraper->result($birth_month);
     }
 }

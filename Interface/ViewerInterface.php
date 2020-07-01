@@ -2,5 +2,5 @@
 
 Interface ViewerInterface
 {
-    public function show(FortuneTellerInterface $teller, $birth_month);
+    public function show(ScraperInterface $scraper, $birth_month);
 }
