@@ -1,16 +1,11 @@
 <?php
 
-require_once('ViewerInterface.php');
-require_once('FortuneTellerInterface.php');
+require_once('Interface/ViewerInterface.php');
 
 class ConsoleViewer implements ViewerInterface
 {
-    public function show(FortuneTellerInterface $teller): void
+    public function show(ScraperInterface $scraper, $birth_month): void
     {
-        echo $teller->label().'！'
-            .$teller->month().'生まれは'
-            .$teller->rank().'位。'
-            .$teller->comment().'。ラッキーカラーは'
-            .$teller->color();
+        echo $scraper->result($birth_month);
     }
 }
